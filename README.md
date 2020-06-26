@@ -6,7 +6,7 @@
   - 即Hadream的记忆与思考在一台拥有强大运算能力的计算机上进行。
   - 而『设备端』则通过网络方式连接，将所感所知传递到『大脑』，『大脑』再根据这些信息作出学习和反应。
 - 本项目为『云端』代码
-  - 要查看『设备端』代码，请前往https://github.com/xiaoland/AutoLearningRobot_Hadream_Client
+  - 要查看『设备端』代码，请前往![ALR_Client](https://github.com/AutoLearningRobotHadream/ALR_Client)
 
 ## 开发者-Developers
 - Lan_zhijiang

@@ -21,9 +21,12 @@
   - opencv
   - tensorflow：tf.kears
 
-## 文件架构-FileStructure
+## 
 
-## 设计思想-Design
+## 结构设计-Structure
+![ALR_Cloud-Structure]()
+
+### 设计思想-Design
 
 ## 更新日志-UpdateLog
 - 2020.6.26

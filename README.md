@@ -1,4 +1,4 @@
-# 自学习AI机器人-Hadream-云端
+# 自学习AI机器人-Hadream-云端（ALR_Cloud）
 
 ## 简介-Introduction
 - 「自学习AI机器人-Hadream」是以能『自我学习』『自我意识』为目标的机器人项目。
@@ -8,27 +8,26 @@
 - 本项目为『云端』代码
   - 要查看『设备端』代码，请前往![ALR_Client](https://github.com/AutoLearningRobotHadream/ALR_Client)
 
-## 开发者-Developers
-- Lan_zhijiang
-
 ## 基本信息-BasicInformation
 - 语言：
   - Python3
   - C++
 - IDE：
   - JetBrains-Pycharm社区版(我好穷)
-- 库：
-  - opencv
-  - tensorflow：tf.kears
+  
+## 开发者-Developers
+- Lan_zhijiang
+- FFXW
+- Leo_Han
 
-## 
+### 结构设计-Structure
+![ALR_Cloud-Structure](https://github.com/AutoLearningRobotHadream/ALR_Cloud/blob/master/ALR_Cloud.png)
 
-## 结构设计-Structure
-![ALR_Cloud-Structure]()
-
-### 设计思想-Design
+### 设计思想-DesignDescrpition
 
 ## 更新日志-UpdateLog
 - 2020.6.26
   - 创建项目
   - 添加README
+- 2020.7.13
+  - 添加ALR_Cloud结构设计思维导图

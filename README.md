@@ -8,17 +8,17 @@
 - 本项目为『云端』代码
   - 要查看『设备端』代码，请前往![ALR_Client](https://github.com/AutoLearningRobotHadream/ALR_Client)
 
+## 开发者-Developers
+- Lan_zhijiang
+- FFXW
+- Leo_Han
+
 ## 基本信息-BasicInformation
 - 语言：
   - Python3
   - C++
 - IDE：
   - JetBrains-Pycharm社区版(我好穷)
-  
-## 开发者-Developers
-- Lan_zhijiang
-- FFXW
-- Leo_Han
 
 ### 结构设计-Structure
 ![ALR_Cloud结构设计图](https://github.com/AutoLearningRobotHadream/ALR_Cloud/blob/master/ALR_Cloud.png)

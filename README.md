@@ -21,9 +21,9 @@
 - Leo_Han
 
 ### 结构设计-Structure
-![ALR_Cloud-Structure](https://github.com/AutoLearningRobotHadream/ALR_Cloud/blob/master/ALR_Cloud.png)
+![ALR_Cloud结构设计图](https://github.com/AutoLearningRobotHadream/ALR_Cloud/blob/master/ALR_Cloud.png)
 
-### 设计思想-DesignDescrpition
+### 设计说明-DesignDescrpition
 
 ## 更新日志-UpdateLog
 - 2020.6.26

@@ -1,4 +1,4 @@
-# 自学习AI机器人-Hadream-云端（ALR_Cloud）
+# 自学习AI机器人-Hadream-云端(ALR_Cloud)
 
 ## 简介-Introduction
 - 「自学习AI机器人-Hadream」是以能『自我学习』『自我意识』为目标的机器人项目。

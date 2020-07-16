@@ -1,4 +1,4 @@
-# 自学习AI机器人-Hadream-云端（ALR_Cloud）
+# 自学习AI机器人-Hadream-云端(ALR_Cloud)
 
 ## 简介-Introduction
 - 「自学习AI机器人-Hadream」是以能『自我学习』『自我意识』为目标的机器人项目。
@@ -8,22 +8,22 @@
 - 本项目为『云端』代码
   - 要查看『设备端』代码，请前往![ALR_Client](https://github.com/AutoLearningRobotHadream/ALR_Client)
 
+## 开发者-Developers
+- Lan_zhijiang
+- FFXW
+- Leo_Han
+
 ## 基本信息-BasicInformation
 - 语言：
   - Python3
   - C++
 - IDE：
   - JetBrains-Pycharm社区版(我好穷)
-  
-## 开发者-Developers
-- Lan_zhijiang
-- FFXW
-- Leo_Han
 
 ### 结构设计-Structure
-![ALR_Cloud-Structure](https://github.com/AutoLearningRobotHadream/ALR_Cloud/blob/master/ALR_Cloud.png)
+![ALR_Cloud结构设计图](https://github.com/AutoLearningRobotHadream/ALR_Cloud/blob/master/ALR_Cloud.png)
 
-### 设计解释-DesignDescrpition
+### 设计说明-DesignDescrpition
 
 ## 主系统-main_system
 - 顾名思义，本系统是管理整个云端功能的部分。
@@ -50,7 +50,6 @@
   - 要达到这个目的，最直接的就是由某个人告诉它这是什么
     - 举个例子：在设备端的摄像头前，有一个苹果，但分类器不知道这是什么，从而对设备端要求更多信息，也就是收集周围的语音。
     如果收集到的语音里有人说这是「苹果」，那么通过语言系统的识别，分类器就能学习到「哦！原来这是苹果啊」，并且优化自身模型，积累知识。
-
 
 ## 更新日志-UpdateLog
 - 2020.6.26

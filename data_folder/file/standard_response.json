@@ -1,0 +1,25 @@
+{
+  "head":
+  {
+    "timeStamp": 246549891,
+    "isRequest": false
+  },
+  "event":
+  {
+    "response":
+    {
+      "commandName":
+      {
+        "status": 0,
+        "errMsg": ""
+      }
+    },
+    "request":
+    [
+      {
+        "commandName": "commandName",
+        "param": {}
+      }
+    ]
+  }
+}

@@ -1,7 +1,6 @@
 [
   {
     "commandName": "getWebsocketPermission",
-    "handleFunction": "AlrCloudWebsocketServer.sign_up_permission",
     "param": [
       "account", "password"
     ]

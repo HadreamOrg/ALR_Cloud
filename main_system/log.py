@@ -61,6 +61,7 @@ class AlrCloudLog():
         try:
             log_file = open(self.get_log_file_path(), "w")
             log_file.write('\r\n' + log)
+            log_file.close()
         except IOError:
             return 1
         else:

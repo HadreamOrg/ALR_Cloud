@@ -3,6 +3,8 @@
 # description: 处理来自HTTP的请求的分类器
 
 import json
+from main_system.log import AlrCloudLog
+
 
 class AlrCloudHttpHandler():
 
@@ -10,6 +12,7 @@ class AlrCloudHttpHandler():
 
         self.request_data = None
         self.api_list = json.load(open("./data_folder/file/api_list.json", "r", encoding="utf-8"))
+        self.log = AlrCloudLog()
 
     def set_request_data(self, request_data):
 
@@ -26,7 +29,10 @@ class AlrCloudHttpHandler():
         开始处理请求
         :return:
         """
-        for now_process_command in self.request_data["event"]["request"]:
-            for wait_confirm_command in self.api_list:
-                if wait_confirm_command["commandName"] == self.request_data:
+        processed_command_count = 0
+        for nowProcessingCommand in self.request_data["event"]["request"]:
+            for waitConfirmCommand in self.api_list:
+                if waitConfirmCommand["commandName"] == nowProcessingCommand["commandName"]:
+                    self.log.add_log(1, "HttpHandler: Start processing command: " + nowProcessingCommand["commandName"])
+                    processed_command_count+=1
 

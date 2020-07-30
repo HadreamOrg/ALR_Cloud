@@ -39,3 +39,4 @@ class AlrCloudWebsocketServer():
         :return:
         """
         await self.confirm_permission(websocket)
+

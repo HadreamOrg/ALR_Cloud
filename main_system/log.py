@@ -55,7 +55,7 @@ class AlrCloudLog():
         :param is_print: 是否打印
         :return:
         """
-        log = "[" + level + "] " + self.get_time_stamp() + " " + content
+        log = "[" + self.logLevelList[level] + "] " + self.get_time_stamp() + " " + content
         if is_print:
             print(log)
         try:

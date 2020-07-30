@@ -79,3 +79,14 @@
   - 更新设计思想
 - 2020.7.18
   - 更新设计思想
+- 2020.7.29
+  - 添加api，response的存储和标准json
+  - 添加云端基本设置
+  - 添加log系统
+- 2020.7.30
+  - 完善log系统
+  - 完善api,response标准
+  - 添加http/websocket服务器
+  - 添加并大致完成http处理器
+  - 添加websocket管理器
+  - 添加用于存储http处理函数的类

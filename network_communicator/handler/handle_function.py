@@ -12,3 +12,11 @@ class AlrCloudHttpHandleFunction():
         self.httpHandleFunctionList = {
             "getWebsocketPermission": AlrCloudWebsocketServerManager(class_log).sign_up_permission
         }
+
+
+class AlrCloudWebsocketHandleFunction():
+
+    def __init__(self, class_log):
+
+        self.websocketHandleFunctionList = {
+        }

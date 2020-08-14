@@ -1,0 +1,8 @@
+[
+  {
+    "commandName": "getWebsocketPermission",
+    "param": [
+      "account", "password"
+    ]
+  }
+]

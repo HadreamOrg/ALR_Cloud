@@ -5,7 +5,7 @@
 from main_system.log import AlrCloudLog
 
 
-class AlrRunInit():
+class AlrCloudRunInit():
 
     def __init__(self):
 

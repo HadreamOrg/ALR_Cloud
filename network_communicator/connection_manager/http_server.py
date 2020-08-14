@@ -9,16 +9,17 @@ import json
 
 port = [5000]
 flask_app = Flask(__name__)
-achhc = AlrCloudHttpHandler()
 
 
-def run_flask(self):
+def run_flask(class_log):
 
     """
     启动Flask服务器
     :return:
     """
     flask_app.run()
+    achhc = AlrCloudHttpHandler(class_log)
+    global achhc
 
 
 @flask_app.route('/api', methods=['POST'])

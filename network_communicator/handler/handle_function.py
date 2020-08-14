@@ -7,8 +7,8 @@ from network_communicator.connection_manager.websocket_server_manager import Alr
 
 class AlrCloudHttpHandleFunction():
 
-    def __init__(self):
+    def __init__(self, class_log):
 
         self.httpHandleFunctionList = {
-            "getWebsocketPermission": AlrCloudWebsocketServerManager().sign_up_permission
+            "getWebsocketPermission": AlrCloudWebsocketServerManager(class_log).sign_up_permission
         }

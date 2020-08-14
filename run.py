@@ -2,4 +2,13 @@
 # author: Lan_zhijiang
 # description: 启动ALR_Cloud的文件
 
+from main_system.log import AlrCloudLog
+
+
+class AlrRunInit():
+
+    def __init__(self):
+
+        self.log = AlrCloudLog()
+
 

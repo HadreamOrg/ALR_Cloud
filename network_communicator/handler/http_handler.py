@@ -11,7 +11,7 @@ class AlrCloudHttpHandler():
     def __init__(self, class_log):
 
         self.request_data = None
-        self.api_list = json.load(open("./data_folder/file/api_list.json", "r", encoding="utf-8"))
+        self.api_list = json.load(open("./data_folder/file/http_api_list.json", "r", encoding="utf-8"))
         self.standard_response = json.load(open("./data_folder/file/standard_response.json", "r", encoding="utf-8"))
         self.handle_function = AlrCloudHttpHandleFunction(class_log)
         self.log = class_log
@@ -32,20 +32,23 @@ class AlrCloudHttpHandler():
         :return:
         """
         response = self.standard_response
-        processed_command_count = 0
 
         for nowProcessingCommand in self.request_data["event"]["request"]:
+            processed_command_count = 0
             for waitConfirmCommand in self.api_list:
                 if waitConfirmCommand["commandName"] == nowProcessingCommand["commandName"]:
                     self.log.add_log(1, "HttpHandler: Start processing command: " + nowProcessingCommand["commandName"])
 
                     processed_command_count += 1
-                    response = self.handle_function.httpHandleFunctionList[nowProcessingCommand["commandName"]](nowProcessingCommand["param"], response)
+                    break
             if processed_command_count == 0:
-                self.log.add_log(3, "HttpHandler: There is no command compare with! CommandName: " + nowProcessingCommand["commandName"])
+                self.log.add_log(2, "HttpHandler: There is no command compare with! CommandName: " + nowProcessingCommand["commandName"])
                 response["event"]["response"][nowProcessingCommand["commandName"]] = {
                     "status": 1,
                     "errMsg": "No compared command in the api list"
                 }
+            else:
+                response = self.handle_function.httpHandleFunctionList[nowProcessingCommand["commandName"]](
+                    nowProcessingCommand["param"], response)
 
         response["head"]["timeStamp"] = self.log.get_time_stamp()

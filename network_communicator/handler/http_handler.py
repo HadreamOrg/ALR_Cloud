@@ -48,7 +48,6 @@ class AlrCloudHttpHandler():
                     "errMsg": "No compared command in the api list"
                 }
             else:
-                response = self.handle_function.httpHandleFunctionList[nowProcessingCommand["commandName"]](
-                    nowProcessingCommand["param"], response)
+                response = self.handle_function.httpHandleFunctionList[nowProcessingCommand["commandName"]](nowProcessingCommand["param"], response)
 
         response["head"]["timeStamp"] = self.log.get_time_stamp()

@@ -90,3 +90,9 @@
   - 添加并大致完成http处理器
   - 添加websocket管理器
   - 添加用于存储http处理函数的类
+- 2020.8.15
+  - 将log类的调用方式改为传递
+  - 添加websocket处理类
+  - 添加用于存储websocket处理函数的类
+  - 添加websocket的api_list
+  - 完善websocket服务器

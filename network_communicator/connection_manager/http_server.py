@@ -9,6 +9,7 @@ import json
 
 port = [5000]
 flask_app = Flask(__name__)
+achhc = 0
 
 
 def run_flask(class_log):
@@ -18,12 +19,12 @@ def run_flask(class_log):
     :return:
     """
     flask_app.run()
-    achhc = AlrCloudHttpHandler(class_log)
     global achhc
+    achhc = AlrCloudHttpHandler(class_log)
 
 
 @flask_app.route('/api', methods=['POST'])
-def route_api(self):
+def route_api():
 
     """
     处理请求到/api路径下的请求

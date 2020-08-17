@@ -16,10 +16,10 @@ class AlrCloudWebsocketHandler():
         self.api_list = json.load(open("./data_folder/file/websocket_api_list.json", "r", encoding="utf-8"))
         self.handle_function = AlrCloudWebsocketHandleFunction(class_log)
 
-    async def handle(self, websocket):
+    def handle(self, websocket):
 
         """
-        分配函数
+        主处理函数
         :param websocket: 传递过来的websocket连接
         :return:
         """
@@ -27,22 +27,27 @@ class AlrCloudWebsocketHandler():
 
         while True:
             processed_command_count = 0
-            command_name = await websocket.recv()
-            for waitConfirmCommand in self.api_list:
-                if waitConfirmCommand["commandName"] == command_name:
-                    self.log.add_log(1, "WebsocketHandler: Start processing command: " + command_name)
+            command_info = websocket.ws_recv()
+            for waitConfirmCommandInfo in self.api_list:
+                if waitConfirmCommandInfo["commandName"] == command_info["commandName"]:
+                    self.log.add_log(1, "WebsocketHandler: Start processing command: " + command_info["commandName"])
                     processed_command_count += 1
-                    command_info = waitConfirmCommand
+                    confirm_command_info = waitConfirmCommandInfo
                     break
 
             if processed_command_count == 0:
-                self.log.add_log(2, "WebsocketHandler: There is no command compare with! CommandName: " + command_name)
-                websocket.send("error")
+                self.log.add_log(2, "WebsocketHandler: There is no command compared with! CommandName: " + command_info["commandName"])
+                websocket.ws_send({"command": "not_found"})
+                websocket.shutdown()
             else:
-                if command_info["Param"] is not None:
-                    websocket.send("param")
-                    param = await websocket.recv()
-                    await self.handle_function.websocketHandleFunctionList[command_info["commandName"]](param, websocket)
-                    websocket.send("next")
-                    self.log.add_log(1, "WebsocketHandler: Command: " + command_name + "processed")
-
+                if confirm_command_info["param"] is not None:
+                    self.log.add_log(1, "WebsocketHandler: Ask for the param...")
+                    param = command_info["param"]
+                else:
+                    param = {}
+                status = self.handle_function.websocketHandleFunctionList[command_info["commandName"]](param, websocket)
+                if status == 0:
+                    websocket.ws_send({"command": "next"})
+                    self.log.add_log(1, "WebsocketHandler: Command: " + command_info["commandName"] + "was processed")
+                else:
+                    return "error_done"

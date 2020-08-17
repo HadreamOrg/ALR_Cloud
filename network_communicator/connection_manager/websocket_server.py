@@ -2,10 +2,11 @@
 # author: Lan_zhijiang
 # description: websocket服务器
 
-import websockets
-import asyncio
 import json
+from pywss import Pyws, route
 from network_communicator.handler.websocket_handler import AlrCloudWebsocketHandler
+
+class_log_global = 0
 
 
 class AlrCloudWebsocketServer():
@@ -13,9 +14,11 @@ class AlrCloudWebsocketServer():
     def __init__(self, class_log):
 
         self.cloud_setting = json.load(open("./setting/cloud_setting/basic_setting.json", "r", encoding="utf-8"))
-        self.websocket_serve = websockets.serve(self.main_logical, self.cloud_setting["hostIp"], self.cloud_setting["websocketPort"])
         self.acwh = AlrCloudWebsocketHandler(class_log)
         self.log = class_log
+
+        global class_log_global
+        class_log_global = class_log
 
     def run_websocket_server(self):
 
@@ -23,14 +26,13 @@ class AlrCloudWebsocketServer():
         启动websocket服务器
         :return:
         """
-        if __name__ == "__main__":
-            self.log.add_log(1, "WebsocketServer: Start websocket server... ")
-            self.log.add_log(1, "WebsocketServer: WsIp: " + self.cloud_setting["hostIp"] + ":" + self.cloud_setting["websocketPort"])
+        self.log.add_log(1, "WebsocketServer: Start websocket server... ")
+        self.log.add_log(1, "WebsocketServer: WsAddr: " + self.cloud_setting["hostIp"] + ":" + str(self.cloud_setting["websocketPort"]))
 
-            asyncio.get_event_loop().run_until_complete(self.websocket_serve)
-            asyncio.get_event_loop().run_forever()
+        ws = Pyws(__name__, address=self.cloud_setting["hostIp"], port=self.cloud_setting["websocketPort"])
+        ws.serve_forever()
 
-    async def confirm_permission(self, websocket):
+    def confirm_permission(self, websocket):
 
         """
         确认身份
@@ -41,24 +43,41 @@ class AlrCloudWebsocketServer():
 
         is_pass = False
         account_password_list = json.load(open("./data_folder/file/websocket_account_password_list.json", "r", encoding="utf-8"))
-        account = await websocket.recv()
-        password = await websocket.recv()
+        websocket.ws_send({"command": "ap"})
+        ap = websocket.ws_recv()
+        account, password = ap["account"], ap["password"]
         for waitConfirm in account_password_list:
             if waitConfirm["account"] == account and waitConfirm["password"] == password:
                 self.log.add_log(1, "WebsocketServer: Permission confirmed")
-                websocket.send("0")
+                websocket.ws_send({"command": "pass"})
                 is_pass = True
         if not is_pass:
             self.log.add_log(2, "WebsocketServer: Permission denied: A/P was not paired")
-            websocket.send("1")
-            websocket.close()
+            websocket.ws_send({"command": "fail"})
+            websocket.shutdown()
 
-    async def main_logical(self, websocket, path):
+    def main_logical(self, websocket, data):
 
         """
         websocket服务器主逻辑
+        :param websocket: 连接对象
+        :param data: 接收的数据
         :return:
         """
-        await self.confirm_permission(websocket)
-        await self.acwh.handle(websocket)
+        self.log.add_log(1, "WebsocketServer: Receive a new connection. Data: " + str(data))
+        self.confirm_permission(websocket)
+        return self.acwh.handle(websocket)
+
+
+@route('/api')
+def route_api(websoscket, data):
+
+    """
+    处理连接到ws/api下的连接给主逻辑
+    :param websoscket: 连接对象
+    :param data: 接收的数据
+    :return:
+    """
+    acws = AlrCloudWebsocketServer(class_log_global)
+    return acws.main_logical(websoscket, data)
 

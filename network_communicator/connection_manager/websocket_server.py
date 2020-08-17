@@ -27,7 +27,7 @@ class AlrCloudWebsocketServer():
         :return:
         """
         self.log.add_log(1, "WebsocketServer: Start websocket server... ")
-        self.log.add_log(1, "WebsocketServer: WsAddr: " + self.cloud_setting["hostIp"] + ":" + str(self.cloud_setting["websocketPort"]))
+        self.log.add_log(1, "WebsocketServer: WsAddr: ws://" + self.cloud_setting["hostIp"] + ":" + str(self.cloud_setting["websocketPort"]))
 
         ws = Pyws(__name__, address=self.cloud_setting["hostIp"], port=self.cloud_setting["websocketPort"])
         ws.serve_forever()

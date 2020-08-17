@@ -96,3 +96,5 @@
   - 添加用于存储websocket处理函数的类
   - 添加websocket的api_list
   - 完善websocket服务器
+- 2020.8.17
+  - 做了不少修改，确保了从run可以启动http和websocket服务器

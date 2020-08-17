@@ -13,9 +13,23 @@ class AlrCloudWebsocketServer():
     def __init__(self, class_log):
 
         self.cloud_setting = json.load(open("./setting/cloud_setting/basic_setting.json", "r", encoding="utf-8"))
-        self.websocket = websockets.serve(self.main_logical, self.cloud_setting["ip"], self.cloud_setting["websocketPort"])
+        self.websocket_serve = websockets.serve(self.main_logical, self.cloud_setting["hostIp"], self.cloud_setting["websocketPort"])
         self.acwh = AlrCloudWebsocketHandler(class_log)
         self.log = class_log
+
+    def run_websocket_server(self):
+
+        """
+        启动websocket服务器
+        :return:
+        """
+        if __name__ == "__main__":
+            self.log.add_log(1, "WebsocketServer: Starting websocket server. WsIp: " +
+                             self.cloud_setting["hostIp"] + ":" +
+                             self.cloud_setting["websocketPort"])
+
+            asyncio.get_event_loop().run_until_complete(self.websocket_serve)
+            asyncio.get_event_loop().run_forever()
 
     async def confirm_permission(self, websocket):
 

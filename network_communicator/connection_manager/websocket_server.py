@@ -70,7 +70,7 @@ class AlrCloudWebsocketServer():
 
 
 @route('/api')
-def route_api(websoscket, data):
+def route_api(websoscket, data):               # 这后面的还没测试过
 
     """
     处理连接到ws/api下的连接给主逻辑

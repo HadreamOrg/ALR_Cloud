@@ -19,6 +19,7 @@ def run_flask(class_log):
     :return:
     """
     class_log.add_log(1, "HttpServer: Start http server...")
+    class_log.add_log(1, "HttpServer: HsAddr: " + cloud_setting["hostIp"] + str(cloud_setting["httpPort"]))
 
     flask_app.run(host=cloud_setting["hostIp"], port=cloud_setting["httpPort"])
     global achhc

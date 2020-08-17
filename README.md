@@ -10,8 +10,6 @@
 
 ## 开发者-Developers
 - Lan_zhijiang
-- FFXW
-- Leo_Han
 
 ## 基本信息-BasicInformation
 - 语言：

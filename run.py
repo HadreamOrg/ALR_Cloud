@@ -36,10 +36,11 @@ class AlrCloudRunInit():
             E-mail:
               lanzhijiang@foxmail.com
         """)
-        self.log.add_log(1, "RunInit: ALR_Cloud is starting")
+        self.log.add_log(1, "###   New ALR_Cloud Log   ###")
+        self.log.add_log(1, "RunInit: Start ALR_Cloud")
 
         # 启动HTTP+WEBSOCKET服务器-并发线程 #
-        self.log.add_log(1, "RunInit: Starting http and websocket server...")
+        self.log.add_log(1, "RunInit: Start http and websocket server...")
         http_server_thread = threading.Thread(target=http_server.run_flask, args=(self.log,))
         websocket_server_thread = threading.Thread(target=self.ws_server.run_websocket_server, args=())
         http_server_thread.start()

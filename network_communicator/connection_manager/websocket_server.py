@@ -24,7 +24,7 @@ class AlrCloudWebsocketServer():
         :return:
         """
         if __name__ == "__main__":
-            self.log.add_log(1, "WebsocketServer: Starting websocket server... ")
+            self.log.add_log(1, "WebsocketServer: Start websocket server... ")
             self.log.add_log(1, "WebsocketServer: WsIp: " + self.cloud_setting["hostIp"] + ":" + self.cloud_setting["websocketPort"])
 
             asyncio.get_event_loop().run_until_complete(self.websocket_serve)

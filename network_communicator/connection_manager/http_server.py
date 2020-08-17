@@ -7,7 +7,7 @@ from flask import request
 from network_communicator.handler.http_handler import AlrCloudHttpHandler
 import json
 
-port = [5000]
+port = [json.load(open("./setting/cloud_setting/basic_setting.json", encoding="utf-8"))["httpPort"]]
 flask_app = Flask(__name__)
 achhc = 0
 
@@ -18,6 +18,8 @@ def run_flask(class_log):
     启动Flask服务器
     :return:
     """
+    class_log.add_log(1, "HttpServer: Starting http server. More information: ⬇")
+
     flask_app.run()
     global achhc
     achhc = AlrCloudHttpHandler(class_log)

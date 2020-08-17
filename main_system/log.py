@@ -46,6 +46,14 @@ class AlrCloudLog():
         """
         return str(datetime.date.today())
 
+    def get_formatted_time(self):
+
+        """
+        获取格式化的时间
+        :return:
+        """
+        return time.strftime("%H:%M:%S")
+
     def add_log(self, level, content, is_print=True):
 
         """
@@ -55,7 +63,7 @@ class AlrCloudLog():
         :param is_print: 是否打印
         :return:
         """
-        log = "[" + self.logLevelList[level] + "] " + self.get_time_stamp() + " " + content
+        log = "[" + self.logLevelList[level] + "] " + self.get_formatted_time() + " " + content
         if is_print:
             print(log)
         try:

@@ -20,9 +20,11 @@ class AlrCloudWebsocketHandler():
 
         """
         分配函数
-        :param websocket:
+        :param websocket: 传递过来的websocket连接
         :return:
         """
+        self.log.add_log(1, "WebsocketHandler: Waiting for command...")
+
         while True:
             processed_command_count = 0
             command_name = await websocket.recv()

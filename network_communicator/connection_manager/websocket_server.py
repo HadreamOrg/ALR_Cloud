@@ -24,9 +24,8 @@ class AlrCloudWebsocketServer():
         :return:
         """
         if __name__ == "__main__":
-            self.log.add_log(1, "WebsocketServer: Starting websocket server. WsIp: " +
-                             self.cloud_setting["hostIp"] + ":" +
-                             self.cloud_setting["websocketPort"])
+            self.log.add_log(1, "WebsocketServer: Starting websocket server... ")
+            self.log.add_log(1, "WebsocketServer: WsIp: " + self.cloud_setting["hostIp"] + ":" + self.cloud_setting["websocketPort"])
 
             asyncio.get_event_loop().run_until_complete(self.websocket_serve)
             asyncio.get_event_loop().run_forever()
@@ -38,7 +37,7 @@ class AlrCloudWebsocketServer():
         :param websocket:
         :return:
         """
-        self.log.add_log(1, "WebsocketServer: Start confirming permission")
+        self.log.add_log(1, "WebsocketServer: Confirming permission...")
 
         is_pass = False
         account_password_list = json.load(open("./data_folder/file/websocket_account_password_list.json", "r", encoding="utf-8"))
@@ -46,11 +45,11 @@ class AlrCloudWebsocketServer():
         password = await websocket.recv()
         for waitConfirm in account_password_list:
             if waitConfirm["account"] == account and waitConfirm["password"] == password:
-                self.log.add_log(1, "WebsocketServer: Confirm permission success")
+                self.log.add_log(1, "WebsocketServer: Permission confirmed")
                 websocket.send("0")
                 is_pass = True
         if not is_pass:
-            self.log.add_log(2, "WebsocketServer: Confirm permission failed: AP is not paired")
+            self.log.add_log(2, "WebsocketServer: Permission denied: A/P was not paired")
             websocket.send("1")
             websocket.close()
 

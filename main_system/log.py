@@ -54,16 +54,19 @@ class AlrCloudLog():
         """
         return time.strftime("%H:%M:%S")
 
-    def add_log(self, level, content, is_print=True):
+    def add_log(self, level, content, is_print=True, is_period=True):
 
         """
         添加log
         :param level: log级别
         :param content: log内容
         :param is_print: 是否打印
+        :param is_period: 是否添加句号
         :return:
         """
-        log = "[" + self.logLevelList[level] + "] " + self.get_formatted_time() + " " + content + " ."
+        log = "[" + self.logLevelList[level] + "] " + self.get_formatted_time() + " " + content
+        if is_period:
+            log = log + " ."
         if is_print:
             print(log)
         try:

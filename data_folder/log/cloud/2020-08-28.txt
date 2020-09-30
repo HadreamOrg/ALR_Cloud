@@ -1,0 +1,15 @@
+
+[INFO] 23:36:00 ###   New ALR_Cloud Log   ### .
+[INFO] 23:36:00 RunInit: Start ALR_Cloud .
+[INFO] 23:36:00 RunInit: Start http and websocket server... .
+[INFO] 23:36:00 HttpServer: Start http server... .
+[INFO] 23:36:00 WebsocketServer: Start websocket server...  .
+[INFO] 23:36:00 WebsocketServer: WsAddr: ws://192.168.3.119:4999 .
+[INFO] 23:36:00 HttpServer: HsAddr: 192.168.3.1195000 .
+[INFO] 23:44:40 ###   New ALR_Cloud Log   ###
+[INFO] 23:44:40 RunInit: Start ALR_Cloud .
+[INFO] 23:44:40 RunInit: Start http and websocket server... .
+[INFO] 23:44:40 HttpServer: Start http server... .
+[INFO] 23:44:40 WebsocketServer: Start websocket server...  .
+[INFO] 23:44:40 WebsocketServer: WsAddr: ws://192.168.3.119:4999 .
+[INFO] 23:44:40 HttpServer: HsAddr: 192.168.3.1195000 .

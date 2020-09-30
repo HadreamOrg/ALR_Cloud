@@ -1,6 +1,1 @@
-{
-  "isFirstTimeStart": true,
-  "hostIp": "192.168.3.119",
-  "websocketPort": 4999,
-  "httpPort": 5000
-}
+{"isFirstTimeStart": true, "hostIp": "192.168.3.119", "websocketPort": 4999, "httpPort": 5000}

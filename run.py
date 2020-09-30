@@ -6,6 +6,7 @@ import sys
 import threading
 import argparse
 import json
+import socket
 from main_system.log import AlrCloudLog
 from network_communicator.connection_manager.websocket_server import AlrCloudWebsocketServer
 sys.path.append("./network_communicator/connection_manager/")
@@ -19,6 +20,22 @@ class AlrCloudRunInit():
         self.basic_setting = json.load(open("./setting/cloud_setting/basic_setting.json", encoding="utf-8"))
         self.log = AlrCloudLog()
         self.ws_server = AlrCloudWebsocketServer(self.log)
+
+        # update host ip
+        self.basic_setting["hostIp"] = self.get_ip()
+        json.dump(self.basic_setting, open("./setting/cloud_setting/basic_setting.json", "w", encoding="utf-8"))
+        self.basic_setting = json.load(open("./setting/cloud_setting/basic_setting.json", encoding="utf-8"))
+
+    def get_ip(self):
+
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(('8.8.8.8', 80))
+            ip = s.getsockname()[0]
+        finally:
+            s.close()
+
+        return ip
 
     def run(self):
 

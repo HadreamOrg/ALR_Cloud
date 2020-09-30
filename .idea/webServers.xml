@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d3c5b26b-1900-4d1e-b75a-d1333ad512a1" name="hadream-server" url="http://fast.svipss.top:24439">
+        <fileTransfer rootFolder="/home/hadream/develop_disk" accessType="SFTP" host="192.168.3.156" port="22" sshConfigId="15c93bdf-0927-409d-81e0-15e38ba53158" sshConfig="root@192.168.3.156:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
